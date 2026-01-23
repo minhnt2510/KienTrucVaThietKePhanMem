@@ -1,0 +1,49 @@
+{
+  "name": "tuan02-scalability-performance-security",
+  "version": "1.0.0",
+  "description": "Week 2: Scalability, Performance & Security Demo",
+  "main": "index.js",
+  "scripts": {
+    "scalability:api": "node scalability/api-server.js",
+    "scalability:worker": "node scalability/consumer-worker.js",
+    "performance:with-cache": "node performance/api-with-cache.js",
+    "performance:without-cache": "node performance/api-without-cache.js",
+    "performance:benchmark": "node performance/benchmark.js",
+    "security:auth": "node security/auth-server-secure.js",
+    "exercise": "node exercise/ecommerce-order-api.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "test:load": "artillery quick --count 100 --num 10 http://localhost:8080/api/products/1"
+  },
+  "keywords": [
+    "scalability",
+    "performance",
+    "security",
+    "redis",
+    "load-balancer",
+    "caching"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "axios": "^1.13.2",
+    "bcrypt": "^5.1.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.22.1",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.9.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "redis": "^4.6.12",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.3",
+    "nodemon": "^3.0.2"
+  }
+}
