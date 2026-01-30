@@ -1,0 +1,30 @@
+@startuml
+' C4-PlantUML Container diagram for Plugin-based CMS
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(admin, "Administrator")
+Person(visitor, "Visitor")
+
+System_Boundary(cms, "Plugin-based CMS") {
+  Container(web, "Public Website", "React/Next.js", "Serves published content and themes")
+  Container(admin_ui, "Admin UI", "React", "Content editing, plugin management")
+  Container(kernel, "CMS Kernel (Microkernel)", "Node.js", "Core extension points & plugin lifecycle")
+  Container(plugin_host, "Plugin Host", "Worker Process", "Runs plugins in isolated processes")
+  ContainerDb(db, "Database", "Postgres", "Content and metadata storage")
+  Container(storage, "Media Storage", "S3-compatible", "User uploads and assets")
+  Container(search, "Search Service", "Elasticsearch", "Content search")
+  Container(worker, "Background Worker", "Node.js", "Asynchronous tasks, indexing, jobs")
+}
+
+Rel(visitor, web, "Uses")
+Rel(admin, admin_ui, "Administers content & plugins")
+Rel(web, kernel, "Requests content & rendering", "HTTP/JSON")
+Rel(admin_ui, kernel, "Calls management APIs", "HTTP/JSON")
+Rel(kernel, plugin_host, "Loads & orchestrates plugins", "RPC / Message bus")
+Rel(kernel, db, "Reads/writes content", "SQL")
+Rel(kernel, storage, "Stores/retrieves media", "S3 API")
+Rel(kernel, search, "Indexes and queries", "HTTP")
+Rel(kernel, worker, "Sends background jobs", "Message queue")
+
+@enduml
+    

@@ -1,0 +1,9 @@
+{
+  "plantuml.jarArgs": [
+    "-DRELATIVE_INCLUDE=."
+  ],
+  "plantuml.previewAutoUpdate": true,
+  "files.associations": {
+    "*.puml": "plantuml"
+  }
+}
