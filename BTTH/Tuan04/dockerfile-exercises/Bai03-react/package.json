@@ -1,0 +1,19 @@
+{
+  "name": "bai03-react",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "serve -s dist -l 3000"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "serve": "14.2.3"
+  },
+  "devDependencies": {
+    "vite": "5.4.10"
+  }
+}
