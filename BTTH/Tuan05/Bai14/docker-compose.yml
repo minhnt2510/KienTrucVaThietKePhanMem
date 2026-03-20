@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  service1:
+    image: busybox
+    command: sleep 3600
+    networks:
+      - my-network
+
+  service2:
+    image: busybox
+    command: sleep 3600
+    networks:
+      - my-network
+
+networks:
+  my-network:
