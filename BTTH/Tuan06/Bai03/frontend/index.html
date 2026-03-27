@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai03 - Service-based architecture</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 40px; }
+      code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+      button { padding: 8px 12px; cursor: pointer; }
+      .row { margin: 10px 0; }
+      pre { background: #0b1020; color: #d7e0ff; padding: 12px; border-radius: 8px; overflow:auto; }
+    </style>
+  </head>
+  <body>
+    <h1>Bai03 - Service-based architecture (FE + BE + DB)</h1>
+
+    <div class="row">
+      Frontend served by <code>nginx</code> (port <code>8080</code>).
+    </div>
+
+    <div class="row">
+      Backend API: <code>http://127.0.0.1:3000</code>
+    </div>
+
+    <div class="row">
+      <button id="btn">Call backend /api/dbtime</button>
+    </div>
+
+    <pre id="out">Click the button...</pre>
+
+    <script>
+      const out = document.getElementById('out');
+      document.getElementById('btn').addEventListener('click', async () => {
+        out.textContent = 'Loading...';
+        try {
+          const res = await fetch('http://127.0.0.1:3000/api/dbtime');
+          const json = await res.json();
+          out.textContent = JSON.stringify(json, null, 2);
+        } catch (e) {
+          out.textContent = String(e);
+        }
+      });
+    </script>
+  </body>
+</html>
+
